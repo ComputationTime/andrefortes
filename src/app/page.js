@@ -437,7 +437,8 @@ const ProjectShowcaseItem = ({ project, index }) => {
               src={project.videoUrl}
               title={project.title}
               frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
               allowFullScreen
             ></iframe>
           ) : project.imageUrl ? (
@@ -543,6 +544,7 @@ const WritingsSection = ({ articles }) => {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
             <input
               type="text"
+              name="search"
               placeholder="Search articles..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -560,6 +562,7 @@ const WritingsSection = ({ articles }) => {
             <div className="hidden md:block relative w-full lg:w-auto">
               <Clock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
               <select
+                name='time'
                 value={selectedTime}
                 onChange={(e) => setSelectedTime(e.target.value)}
                 className="w-full appearance-none bg-slate-50 pl-12 pr-10 py-3 border border-transparent rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -672,6 +675,7 @@ const MultiSelectDropdown = ({ options, selectedOptions, onSelectionChange, onCl
         <div className="absolute z-20 w-full mt-2 bg-white border border-slate-200 rounded-lg shadow-lg">
           <div className="p-2">
             <input
+              name="tags"
               type="text"
               placeholder="Search tags..."
               value={searchTerm}
@@ -684,6 +688,7 @@ const MultiSelectDropdown = ({ options, selectedOptions, onSelectionChange, onCl
               <li key={option}>
                 <label className="flex items-center space-x-3 p-2 hover:bg-slate-100 rounded-md cursor-pointer">
                   <input
+                    name="tag checkbox"
                     type="checkbox"
                     checked={selectedOptions.includes(option)}
                     onChange={() => onSelectionChange(option)}
